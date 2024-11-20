@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Patient Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .patient-info {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .patient-info h3 {
+            margin-top: 0;
+        }
+        .patient-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Get Patient Information</h1>
+
+    <!-- Form to input CID -->
+    <div class="form-group">
+        <label for="cid">Enter CID:</label>
+        <input type="text" id="cid" placeholder="Enter CID">
+    </div>
+    <button id="fetchPatientInfo">Get Patient Info</button>
+
+    <!-- Display patient information -->
+    <div id="patient-info" class="patient-info" style="display:none;">
+        <h3>Patient Information</h3>
+        <p><strong>Name:</strong> <span id="patient-name"></span></p>
+        <p><strong>Gender:</strong> <span id="patient-gender"></span></p>
+        <p><strong>Birth Date:</strong> <span id="patient-dob"></span></p>
+        <p><strong>Email:</strong> <span id="patient-email"></span></p>
+        <p><strong>Occupation:</strong> <span id="patient-occupation"></span></p>
+        <p><strong>Profile Picture:</strong> <img id="patient-profile-picture" src="" alt="Profile Picture" width="100"></p>
+    </div>
+</div>
+
+<script>
+    // Function to fetch patient info by CID
+    document.getElementById('fetchPatientInfo').addEventListener('click', function() {
+        var cid = document.getElementById('cid').value;
+        
+        if (!cid) {
+            alert("Please enter a CID.");
+            return;
+        }
+
+        // Send GET request to the API endpoint
+        fetch(`/gateway/getPatientInfo?cid=${cid}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.patient) {
+                    // Display patient info
+                    document.getElementById('patient-name').textContent = `${data.patient.first_name} ${data.patient.last_name}`;
+                    document.getElementById('patient-gender').textContent = data.patient.gender || 'N/A';
+                    document.getElementById('patient-dob').textContent = data.patient.birth_details.dob || 'N/A';
+                    document.getElementById('patient-email').textContent = data.patient.contact_info.email || 'N/A';
+                    document.getElementById('patient-occupation').textContent = data.patient.occupation || 'N/A';
+                    document.getElementById('patient-profile-picture').src = data.pictures.profile_picture_url;
+
+                    // Show the patient info section
+                    document.getElementById('patient-info').style.display = 'block';
+                } else {
+                    alert('Patient information not found.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching patient info:', error);
+                alert('An error occurred while fetching the patient information.');
+            });
+    });
+</script>
+
+</body>
+</html>

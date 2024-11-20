@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Patient Info</title>
+</head>
+<body>
+    <h1>Patient Information Lookup</h1>
+    
+    <!-- Form to enter CID -->
+    <form id="patientInfoForm">
+        <label for="cid">Enter Patient CID:</label>
+        <input type="text" id="cid" name="cid" required>
+        <button type="submit">Get Patient Info</button>
+    </form>
+
+    <!-- Div to display the result -->
+    <div id="patientInfoResult" style="margin-top: 20px;">
+        <h2>Patient Details:</h2>
+        <pre id="patientInfo"></pre>
+    </div>
+
+    <!-- JavaScript to handle form submission and display response -->
+    <script>
+        document.getElementById('patientInfoForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form from submitting traditionally
+
+            // Get the CID from the form input
+            const cid = document.getElementById('cid').value;
+
+            // Send a GET request to the /gateway/getPatientInfo API
+            fetch(`http://${HOST}:${PORT}/gateway/getPatientInfo?cid=${cid}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Display the returned data in the preformatted text element
+                    document.getElementById('patientInfo').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('patientInfo').textContent = 'Error: ' + error.message;
+                });
+        });
+    </script>
+</body>
+</html>

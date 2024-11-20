@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Vital Signs</title>
+</head>
+<body>
+    <h1>Send Vital Signs</h1>
+    <form action="/send_vital_sign" method="POST">
+        <label for="hn">card ID (cid):</label>
+        <input type="text" id="hn" name="cid" required><br><br>
+
+        <label for="hn">Hospital Number (hn):</label>
+        <input type="text" id="hn" name="hn" required><br><br>
+
+        <label for="vn">Visit Number (vn):</label>
+        <input type="text" id="vn" name="vn" required><br><br>
+
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" id="patient_id" name="patient_id" required><br><br>
+
+        <label for="care_unit_id">Care Unit ID:</label>
+        <input type="text" id="care_unit_id" name="care_unit_id" required><br><br>
+
+        <label for="health_record_id">Health Record ID:</label>
+        <input type="text" id="health_record_id" name="health_record_id" required><br><br>
+
+        <label for="datetime">Datetime:</label>
+        <input type="text" id="datetime" name="datetime" required><br><br>
+
+        <label for="remark">Remark:</label>
+        <input type="text" id="remark" name="remark"><br><br>
+
+        <button type="submit">Send Vital Sign</button>
+    </form>
+</body>
+</html>

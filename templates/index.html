@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Materialize CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Additional styling for a polished look */
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        .hero-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #26a69a;
+            color: white;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .feature-icon {
+            font-size: 50px;
+            color: #26a69a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="teal lighten-1">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">GATEWAY API</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome</h1>
+        <p class="flow-text">GATEWAY API Service กำลังทำงาน...</p>
+        <a href="/apidoc" class="btn-large waves-effect waves-light teal darken-2">เอกสารการเชื่อมต่อ API</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Features Section -->
+            <section id="features" class="section">
+                <div class="row">
+                    <h4 class="center-align">Features</h4>
+                    <div class="col s12 m4">
+                        <div class="center-align">
+                            <i class="material-icons feature-icon">cloud</i>
+                            <h5>Cloud-Based</h5>
+                            <p>Access your data from anywhere</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="center-align">
+                            <i class="material-icons feature-icon">speed</i>
+                            <h5>High Performance</h5>
+                            <p>Experience fast response times with our optimized API infrastructure.</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="center-align">
+                            <i class="material-icons feature-icon">security</i>
+                            <h5>Secure</h5>
+                            <p>We prioritize security to protect your data at all times.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>          
+
+         
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer teal lighten-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">GATEWAY API</h5>
+                    <p class="grey-text text-lighten-4">API service ESM</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#features">Features</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#about">About</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2024 GATEWAY API, All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Materialize JS and Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
